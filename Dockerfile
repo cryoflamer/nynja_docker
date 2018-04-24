@@ -9,5 +9,9 @@ RUN mkdir -p /opt/erlang/ && \
     mv kerl /opt/erlang/ && \
     ln -s /opt/erlang/kerl /usr/local/bin/kerl
 
-RUN kerl update releases
-RUN apt-get install sudo
+RUN apt-get install sudo inotify-tools
+
+RUN useradd -m -p qwerty ubuntu && su ubuntu
+RUN kerl update releases && kerl build 20.2 20.2 && kerl install 20.2 ~/.kerl/20.2
+RUN . /home/ubuntu/.kerl/20.2/activate
+
