@@ -13,7 +13,7 @@ RUN apt-get install sudo -y inotify-tools
 
 
 RUN useradd -m -p qwerty ubuntu
-RUN ubuntu
+USER ubuntu
 RUN whoami
 RUN kerl update releases && kerl build 20.2 20.2 && kerl install 20.2 ~/.kerl/20.2
 RUN . /home/ubuntu/.kerl/20.2/activate
