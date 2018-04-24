@@ -17,5 +17,3 @@ USER ubuntu
 RUN whoami
 RUN kerl update releases && kerl build 20.2 20.2 && kerl install 20.2 ~/.kerl/20.2
 RUN . /home/ubuntu/.kerl/20.2/activate
-
-RUN
