@@ -18,5 +18,8 @@ RUN apt-get install -y sudo -y inotify-tools -y mc
 RUN useradd -m ubuntu && echo "ubuntu:qwerty" | chpasswd && adduser ubuntu sudo
 
 USER ubuntu
-RUN kerl update releases && kerl build 20.2 20.2 && kerl install 20.2 ~/.kerl/20.2
-RUN . /home/ubuntu/.kerl/20.2/activate
+
+ENV OTP_VERSION "20.2"
+RUN kerl update releases && kerl build ${OTP_VERSION} ${OTP_VERSION} && kerl install ${OTP_VERSION} ~/.kerl/${OTP_VERSION}
+ENV PATH=/home/ubuntu/.kerl/${OTP_VERSION}/bin:${PATH}
+RUN echo "source /home/ubuntu/.kerl/20.2/activate" >> $HOME/.bashrc
