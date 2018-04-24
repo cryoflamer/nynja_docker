@@ -22,4 +22,4 @@ USER ubuntu
 ENV OTP_VERSION "20.2"
 RUN kerl update releases && kerl build ${OTP_VERSION} ${OTP_VERSION} && kerl install ${OTP_VERSION} ~/.kerl/${OTP_VERSION}
 ENV PATH=/home/ubuntu/.kerl/${OTP_VERSION}/bin:${PATH}
-RUN echo "source /home/ubuntu/.kerl/20.2/activate" >> $HOME/.bashrc
+RUN echo "source /home/ubuntu/.kerl/${OTP_VERSION}/activate" >> $HOME/.bashrc
