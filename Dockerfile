@@ -11,11 +11,18 @@ RUN mkdir -p /opt/erlang/ && \
 
 RUN apt-get install -y sudo -y inotify-tools
 
-RUN useradd -m ubuntu && echo "ubuntu:ubuntu" | qwerty && adduser ubuntu sudo
+RUN useradd -m ubuntu && echo "ubuntu:ubuntu" | chpasswd && adduser ubuntu sudo
 
-RUN useradd -m -p qwerty ubuntu
+#RUN useradd -m -p qwerty ubuntu
 USER ubuntu
-RUN whoami
+#RUN whoami
 #RUN kerl update releases && kerl build 20.2 20.2 && kerl install 20.2 ~/.kerl/20.2
 #RUN . /home/ubuntu/.kerl/20.2/activate
 
+#RUN apt-get update && \
+#      apt-get -y install sudo
+#
+#RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+#
+#USER docker
+#CMD /bin/bash
